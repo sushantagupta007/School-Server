@@ -12,5 +12,5 @@ var verify = require("./verifyToken");
 var router = express.Router();
 router.route("/postresult").post(makeResult);
 router.route("").get(getResult);
-router.route("/see").get(seeHTML);
+router.route("/pdf").get(seeHTML);
 module.exports = router;

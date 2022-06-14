@@ -91,14 +91,16 @@
             justify-content: center;
             flex-direction: column;
             align-items: center;
-            border: 1px solid black;
-            width: 10%
+
+            width: 25%
         }
 
         .imgContainer img {
             width: 100px;
             height: 50px;
         }
+
+        #button {}
     </style>
 </head>
 
@@ -112,6 +114,9 @@
             </h3>
             <h3>
                 Roll: <%= results[1].id %>
+            </h3>
+            <h3>
+                CT: <%= results[9].ct %>
             </h3>
         </section>
     </header>
@@ -133,33 +138,57 @@
             </tr>
             <tr>
                 <td>English</td>
-                <td>${english}</td>
-                <td>A+</td>
+                <td>
+                    <%= results[3].english.score %>
+                </td>
+                <td>
+                    <%= results[3].english.grade %>
+                </td>
             </tr>
             <tr>
                 <td>Math</td>
-                <td>${math}</td>
-                <td>A+</td>
+                <td>
+                    <%= results[4].math.score %>
+                </td>
+                <td>
+                    <%= results[4].math.grade %>
+                </td>
             </tr>
             <tr>
-                <td>Math</td>
-                <td>${science}</td>
-                <td>A+</td>
+                <td>Science</td>
+                <td>
+                    <%= results[5].science.score %>
+                </td>
+                <td>
+                    <%= results[5].science.grade %>
+                </td>
             </tr>
             <tr>
-                <td>Math</td>
-                <td>${socialscience}</td>
-                <td>A+</td>
+                <td>Social Science</td>
+                <td>
+                    <%= results[6].socialScience.score %>
+                </td>
+                <td>
+                    <%= results[6].socialScience.grade %>
+                </td>
             </tr>
             <tr>
-                <td>Math</td>
-                <td>${gk}</td>
-                <td>A+</td>
+                <td>GK</td>
+                <td>
+                    <%= results[7].gk.score %>
+                </td>
+                <td>
+                    <%= results[7].gk.grade %>
+                </td>
             </tr>
             <tr>
-                <td>Math</td>
-                <td>${it}</td>
-                <td>A+</td>
+                <td>IT</td>
+                <td>
+                    <%= results[8].It.score %>
+                </td>
+                <td>
+                    <%= results[8].It.grade %>
+                </td>
             </tr>
         </table>
     </main>
@@ -169,15 +198,17 @@
             <div class="imgContainer">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRJRZduIrzENX0q62WpjaMRruWi94KmnteWQ&usqp=CAU"
                     alt="sign" />
-                <div>
-                    <p style="border-top:1px solid black">${ct}</p>
-                    <p>Class Teacher, 8 </p>
-                </div>
-
             </div>
         </div>
+        <button id="send" type="button"> Send</button>
     </footer>
-
+    <script>
+        let button = document.getElementById("send");
+        button.addEventListener("click", () => {
+            fetch('http://localhost:5000/teacher/pdf')
+                .then(res => console.log(res))
+        })
+    </script>
 </body>
 
 </html>

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "print": "node print.js"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +24,7 @@
     "mongoose": "^6.3.2",
     "multer": "^1.4.4",
     "nodemon": "^2.0.16",
-    "pdf-creator-node": "^2.3.4"
+    "pdf-creator-node": "^2.3.4",
+    "puppeteer": "^14.3.0"
   }
 }

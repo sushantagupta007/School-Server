@@ -1,8 +1,5 @@
 "use strict";
 
-var express = require("express");
-
-var app = express();
 var results;
 
 exports.makeResult = function _callee(req, res) {
@@ -11,10 +8,11 @@ exports.makeResult = function _callee(req, res) {
       switch (_context.prev = _context.next) {
         case 0:
           results = req.body;
-          console.log(results);
+          console.log(req.protocol);
+          console.log(req.get("host"));
           res.redirect("/teacher");
 
-        case 3:
+        case 4:
         case "end":
           return _context.stop();
       }
@@ -28,4 +26,7 @@ exports.getResult = function (req, res) {
   });
 };
 
-exports.seeHTML = function (req, res) {};
+exports.seeHTML = function (req, res) {
+  res.json("hello I am from pdf");
+  console.log("hello");
+};

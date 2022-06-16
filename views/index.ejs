@@ -100,7 +100,9 @@
             height: 50px;
         }
 
-        #button {}
+        .display {
+            display: none;
+        }
     </style>
 </head>
 
@@ -200,14 +202,30 @@
                     alt="sign" />
             </div>
         </div>
-        <button id="send" type="button"> Send</button>
+        <div id="buttonDiv">
+            <button id="send" type="button"> Send</button>
+            <button id="sendBack" type="button"> Return </button>
+        </div>
+
     </footer>
     <script>
         let button = document.getElementById("send");
+        let button1 = document.getElementById("sendBack");
         button.addEventListener("click", () => {
+            button.classList.add("display")
+            button1.classList.add("display")
             fetch('http://localhost:5000/teacher/pdf')
-                .then(res => console.log(res))
+                .then(res => {
+                    if (res.status === 200) {
+                        alert("PDF Generation Successful")
+                    }
+                })
+
         })
+        button1.addEventListener("click", () => {
+            window.history.back()
+        })
+
     </script>
 </body>
 

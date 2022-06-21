@@ -216,7 +216,7 @@
             button1.classList.add("display")
             fetch('http://localhost:5000/teacher/pdf')
                 .then(res => {
-                    if (res.status === 200) {
+                    if (res.status === 204) {
                         alert("PDF Generation Successful")
                     }
                 })

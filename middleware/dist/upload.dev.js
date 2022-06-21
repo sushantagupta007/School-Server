@@ -10,18 +10,18 @@ var express = require("express"); //set storage engine
 var storage = multer.diskStorage({
   destination: "./public/image/",
   filename: function filename(req, file, cb) {
-    cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
+    cb(null, file.originalname + path.extname(""));
   }
 });
 var upload = multer({
   storage: storage,
   limits: {
-    fileSize: 1000000
+    fileSize: 10000000
   },
   fileFilter: function fileFilter(req, file, cb) {
     checkFileType(file, cb);
   }
-}).single("myfile"); // Check File Type
+}).single("file"); // Check File Type
 
 function checkFileType(file, cb) {
   // Allowed ext

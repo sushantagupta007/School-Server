@@ -214,11 +214,9 @@
         button.addEventListener("click", () => {
             button.classList.add("display")
             button1.classList.add("display")
-            fetch('http://localhost:5000/teacher/pdf')
+            fetch('http://localhost:5000/teacher')
                 .then(res => {
-                    if (res.status === 204) {
-                        alert("PDF Generation Successful")
-                    }
+                    console.log(res)
                 })
 
         })

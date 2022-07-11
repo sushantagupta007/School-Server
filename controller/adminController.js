@@ -2,6 +2,8 @@ const Picture = require("../model/picture");
 const Student = require("../model/image");
 
 exports.registerStudent = async (req, res, next) => {
+  let student_id = req.query.id;
+  console.log(student_id);
   const {
     name,
     admissionYear,
@@ -24,7 +26,6 @@ exports.registerStudent = async (req, res, next) => {
   if (existingStudent) return res.status(400).send("Student Already Exits");
 
   //Create New User
-
   const studentInfo = new Student({
     name: name,
     age: age,
@@ -43,6 +44,8 @@ exports.registerStudent = async (req, res, next) => {
     email: email,
   });
 
+  const ryu = await Student.findOne({ _id: student_id });
+  console.log(ryu);
   try {
     const savedStudent = await studentInfo.save();
     res.send(savedStudent);
@@ -67,7 +70,7 @@ exports.getData = async (req, res) => {
 exports.imageUpload = async (req, res, next) => {
   console.log("helo");
   try {
-    const file = new Picture({
+    const file = new Student({
       fileName: req.file.originalname,
       filePath: req.file.path,
       fileSize: fileSizeFormatter(req.file.size, 2),

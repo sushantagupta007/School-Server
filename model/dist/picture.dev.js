@@ -5,20 +5,16 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 var pictureSchema = new Schema({
   fileName: {
-    type: String,
-    required: true
+    type: String
   },
   filePath: {
-    type: String,
-    required: true
+    type: String
   },
   fileType: {
-    type: String,
-    required: true
+    type: String
   },
   fileSize: {
-    type: String,
-    required: true
+    type: String
   }
 }, {
   timestamps: true

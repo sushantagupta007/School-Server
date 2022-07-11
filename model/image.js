@@ -78,6 +78,18 @@ const imageSchema = new Schema(
       max: 255,
       min: 2,
     },
+    fileName: {
+      type: String,
+    },
+    filePath: {
+      type: String,
+    },
+    fileType: {
+      type: String,
+    },
+    fileSize: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

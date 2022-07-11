@@ -5,30 +5,32 @@ var Picture = require("../model/picture");
 var Student = require("../model/image");
 
 exports.registerStudent = function _callee(req, res, next) {
-  var _req$body, name, admissionYear, age, gender, bloodGroup, id, district, thana, village, houseNo, mobile, classNo, guardian, email, existingStudent, studentInfo, savedStudent;
+  var student_id, _req$body, name, admissionYear, age, gender, bloodGroup, id, district, thana, village, houseNo, mobile, classNo, guardian, email, existingStudent, studentInfo, ryu, savedStudent;
 
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
+          student_id = req.query.id;
+          console.log(student_id);
           _req$body = req.body, name = _req$body.name, admissionYear = _req$body.admissionYear, age = _req$body.age, gender = _req$body.gender, bloodGroup = _req$body.bloodGroup, id = _req$body.id, district = _req$body.district, thana = _req$body.thana, village = _req$body.village, houseNo = _req$body.houseNo, mobile = _req$body.mobile, classNo = _req$body.classNo, guardian = _req$body.guardian, email = _req$body.email; //Check if student exists
 
-          _context.next = 3;
+          _context.next = 5;
           return regeneratorRuntime.awrap(Student.findOne({
             id: req.body.id
           }));
 
-        case 3:
+        case 5:
           existingStudent = _context.sent;
 
           if (!existingStudent) {
-            _context.next = 6;
+            _context.next = 8;
             break;
           }
 
           return _context.abrupt("return", res.status(400).send("Student Already Exits"));
 
-        case 6:
+        case 8:
           //Create New User
           studentInfo = new Student({
             name: name,
@@ -46,27 +48,35 @@ exports.registerStudent = function _callee(req, res, next) {
             id: id,
             email: email
           });
-          _context.prev = 7;
-          _context.next = 10;
+          _context.next = 11;
+          return regeneratorRuntime.awrap(Student.findOne({
+            _id: student_id
+          }));
+
+        case 11:
+          ryu = _context.sent;
+          console.log(ryu);
+          _context.prev = 13;
+          _context.next = 16;
           return regeneratorRuntime.awrap(studentInfo.save());
 
-        case 10:
+        case 16:
           savedStudent = _context.sent;
           res.send(savedStudent);
-          _context.next = 17;
+          _context.next = 23;
           break;
 
-        case 14:
-          _context.prev = 14;
-          _context.t0 = _context["catch"](7);
+        case 20:
+          _context.prev = 20;
+          _context.t0 = _context["catch"](13);
           console.log(_context.t0);
 
-        case 17:
+        case 23:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[7, 14]]);
+  }, null, null, [[13, 20]]);
 };
 
 exports.getData = function _callee2(req, res) {
@@ -100,7 +110,7 @@ exports.imageUpload = function _callee3(req, res, next) {
         case 0:
           console.log("helo");
           _context3.prev = 1;
-          file = new Picture({
+          file = new Student({
             fileName: req.file.originalname,
             filePath: req.file.path,
             fileSize: fileSizeFormatter(req.file.size, 2),

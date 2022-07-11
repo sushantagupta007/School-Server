@@ -1,6 +1,9 @@
 const puppeteer = require("puppeteer");
 const path = require("path");
 
+//nodemailer 
+const nodemailer = require('nodemailer');
+
 let results;
 
 exports.makeResult = async (req, res) => {
@@ -36,14 +39,19 @@ exports.seeHTML = async (req, res) => {
       right: "2.54cm",
     },
   };
-  await page.evaluate(() => {
-    const list = document.getElementById("buttonDiv");
-    list.removeChild(list.firstElementChild);
-  });
+  // await page.evaluate(() => {
+  //   const list = document.getElementById("buttonDiv");
+  //   list.removeChild(list.firstElementChild);
+  // });
   await page.pdf({ path: filePath, pdfConfig });
 
-  await page.waitForTimeout(5000);
+  await page.waitForTimeout(1);
   await browser.close();
 
+  
   res.download(filePath);
 };
+
+exports.sendPdf = async(req,res) =>{
+  console.log("hello",req.body)
+}

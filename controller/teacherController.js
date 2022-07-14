@@ -56,18 +56,24 @@ exports.seeHTML = async (req, res) => {
 exports.sendPdf = async(req,res) =>{
   console.log(path.resolve(__dirname+'/pdf/result.pdf'))
   var transport = nodemailer.createTransport({
-  host: "smtp.mailtrap.io",
-  port: 2525,
+  // host: "smtp.mailtrap.io",
+  // port: 2525,
+  service:'gmail',
   auth: {
-    user: "d51d2dedc717fe",
-    pass: "831bc5a1fd1d4a"
+    type:'OAuth2',
+    user: 'sushanta.sust@gmail.com',
+    clientId: '998519038372-a6flvhs6cr10sit700cos27du3o1mnlq.apps.googleusercontent.com',
+    // "d51d2dedc717fe",
+    clientSecret:'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',
+    accessToken:'ya29.A0AVA9y1t9TB-BAjvP830rWHKFDkA9bFwnzjKoVHPZLaJ_ccR6bSconnXtoGnLRxP2CYm5RDFtuSP-qE314knP_lGb8pZ2LzUyD-dppeNSMD49EGnwQwzt7cBdHlLJXWzvl4-zMdNE4YPwUfW6_bZP3KvM9Y3DYUNnWUtBVEFTQVRBU0ZRRTY1ZHI4VVFOWEtwX2YyQW5iUkhyaE1EWTl5dw0163'
+    // pass: "831bc5a1fd1d4a"
   }
   });
   const mailOptions = {
-    from: 'sender@gmail.com', // Sender address
-    to: 'receiver@gmail.com', // List of recipients
-    subject: 'Node Mailer', // Subject line
-    text: 'Sushanta', // Plain text body
+    from: 'sushanta.sust@gmail.com', // Sender address
+    to: 'sushanta.gupta007@gmail.com', // List of recipients
+    subject: 'Transcrpit', // Subject line
+    text: 'Your Transcript', // Plain text body
     attachments: [
       {   // file on disk as an attachment
         filename: 'result.pdf',
@@ -85,3 +91,8 @@ exports.sendPdf = async(req,res) =>{
   });
   
 }
+
+
+// 998519038372-a6flvhs6cr10sit700cos27du3o1mnlq.apps.googleusercontent.com
+
+// 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

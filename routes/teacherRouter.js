@@ -12,6 +12,6 @@ const router = express.Router();
 router.route("/postresult").post(makeResult);
 router.route("").get(getResult);
 router.route("/pdf").get(seeHTML);
-// router.route("/sendPdf").get(sendPdf)
+router.route("/sendPdf").post(sendPdf)
 
 module.exports = router;

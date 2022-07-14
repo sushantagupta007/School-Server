@@ -24,6 +24,7 @@
     "multer": "^1.4.4",
     "nodemailer": "^6.7.7",
     "nodemon": "^2.0.16",
-    "puppeteer": "^14.4.0"
+    "puppeteer": "^14.4.0",
+    "requirejs": "^2.3.6"
   }
 }

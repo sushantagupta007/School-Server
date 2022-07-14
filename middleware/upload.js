@@ -4,7 +4,7 @@ const express = require("express");
 
 //set storage engine
 const storage = multer.diskStorage({
-  destination: "./public/image/",
+  destination: "./public/pdf/",
   filename: function (req, file, cb) {
     cb(null, file.originalname + path.extname(""));
   },
@@ -21,7 +21,7 @@ const upload = multer({
 // Check File Type
 function checkFileType(file, cb) {
   // Allowed ext
-  const filetypes = /jpeg|jpg|png|gif/;
+  const filetypes = /pdf/;
   // Check ext
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
   // Check mime

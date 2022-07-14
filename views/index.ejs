@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Document</title>
+    
     <style>
         body {
             border: 1px solid black;
@@ -208,23 +209,28 @@
         </div>
 
     </footer>
+   
     <script>
         let button = document.getElementById("send");
         let button1 = document.getElementById("sendBack");
         button.addEventListener("click", () => {
             button.classList.add("display")
-            button1.classList.add("display")
+            
             fetch('http://localhost:5000/teacher')
                 .then(res => {
-                    console.log(res)
+                    if(res.status===200){
+                        fetch('http://localhost:5000/teacher/pdf').then(res=>console.log(res))
+                        alert("PDF Generate Susscefully")
+                    }
                 })
 
-        })
+            })
         button1.addEventListener("click", () => {
             window.history.back()
         })
 
     </script>
+ 
 </body>
 
 </html>

@@ -21,7 +21,7 @@ app.use(router);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
-
+app.use("/static", express.static('./static/'));
 app.set("view engine", "ejs");
 
 app.get("/user", (req, res) => {

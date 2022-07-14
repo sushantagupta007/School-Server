@@ -61,11 +61,11 @@ exports.sendPdf = async(req,res) =>{
   service:'gmail',
   auth: {
     type:'OAuth2',
-    user: 'sushanta.sust@gmail.com',
-    clientId: '998519038372-a6flvhs6cr10sit700cos27du3o1mnlq.apps.googleusercontent.com',
-    // "d51d2dedc717fe",
-    clientSecret:'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',
-    accessToken:'ya29.A0AVA9y1t9TB-BAjvP830rWHKFDkA9bFwnzjKoVHPZLaJ_ccR6bSconnXtoGnLRxP2CYm5RDFtuSP-qE314knP_lGb8pZ2LzUyD-dppeNSMD49EGnwQwzt7cBdHlLJXWzvl4-zMdNE4YPwUfW6_bZP3KvM9Y3DYUNnWUtBVEFTQVRBU0ZRRTY1ZHI4VVFOWEtwX2YyQW5iUkhyaE1EWTl5dw0163'
+    user: process.env.user,
+    clientId:  process.env.id,
+        // "d51d2dedc717fe",
+    clientSecret: process.env.password, 
+    accessToken: process.env.token
     // pass: "831bc5a1fd1d4a"
   }
   });
